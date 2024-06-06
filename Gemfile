@@ -5,7 +5,7 @@ source "https://rubygems.org"
 ruby file: ".ruby-version"
 
 # Rails
-gem "rails", github: "rails/rails", branch: "7-2-stable"
+gem "rails", github: "rails/rails", branch: "main"
 
 # Drivers
 gem "sqlite3", "~> 1.4"
