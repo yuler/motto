@@ -1,0 +1,18 @@
+<%= form_with model: quote, class: "flex flex-col gap-4" do |form| %>
+  <div class="flex flex-col">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+  <div class="flex flex-col">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div class="flex flex-col">
+    <%= form.label :poster %>
+    <%= image_tag quote.poster, class: "h-40 border" if quote.poster.attached? %>
+    <%= form.file_field :poster, accept: "image/*" %>
+  </div>
+  <div class="flex justify-end">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

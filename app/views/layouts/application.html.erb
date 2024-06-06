@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
   </head>
 
   <body>
     <nav class="w-[min(100%, 34.5em)]">
       <div class="prose mx-auto my-20">
-        <h1>Motto</h1>
+        <!-- TODO: -->
+        <h1>Motto Logo</h1> 
       </div>
     </nav>  
     <main class="prose mx-auto">
