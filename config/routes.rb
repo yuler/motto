@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   # /api routes
   namespace :api, defaults: { format: :json } do
-    get "test" => "index#test", as: :test
+    get "public" => "index#public", as: :public
     get "protected" => "index#protected", as: :protected
+    resources "sessions", only: [ :create, :show, :destroy ]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

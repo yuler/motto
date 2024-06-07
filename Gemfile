@@ -29,6 +29,9 @@ gem "image_processing", "~> 1.2"
 
 # Other
 gem "bcrypt", "~> 3.1.7"
+gem "faraday"
+gem "faraday-retry"
+gem "jwt"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 

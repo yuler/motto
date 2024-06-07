@@ -29,15 +29,13 @@ module ApiAuthentication
   end
 
   def authenticate_as(token)
-    # TODO: decode jwt, mock a user
-    user = { id: 1, token: token }
-    # user = Token.find_by(value: token)&.user
-
-    unless user
-      render json: { message: "Unauthorized" }, status: :unauthorized
-      return
+    begin
+      @decoded = JsonWebToken.decode(token)
+      Current.user = User.find(@decoded[:user_id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { errors: e.message }, status: :unauthorized
+    rescue JWT::DecodeError => e
+      render json: { errors: e.message }, status: :unauthorized
     end
-
-    Current.user = user
   end
 end
