@@ -5,7 +5,7 @@ source "https://rubygems.org"
 ruby file: ".ruby-version"
 
 # Rails
-gem "rails", github: "rails/rails", branch: "main"
+gem "rails"
 
 # Drivers
 gem "sqlite3", "~> 1.4"
@@ -27,14 +27,18 @@ gem "turbo-rails"
 # Active Storage
 gem "image_processing", "~> 1.2"
 
+# OpenApi
+gem "jwt"
+gem "jbuilder"
+gem "rswag"
+gem "rswag-api"
+gem "rswag-ui"
+
 # Other
 gem "bcrypt", "~> 3.1.7"
 gem "faraday"
 gem "faraday-retry"
-gem "jwt"
-gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
-
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
