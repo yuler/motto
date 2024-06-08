@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  # Api documentation
+  apipie
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :quotes
 
   # /api routes
   namespace :api, defaults: { format: :json } do
-    get "public" => "index#public", as: :public
-    get "protected" => "index#protected", as: :protected
+    get "public" => "test#public", as: :public
+    get "protected" => "test#protected", as: :protected
+
     resources "sessions", only: [ :create, :show, :destroy ]
   end
 

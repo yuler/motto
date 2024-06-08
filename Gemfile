@@ -27,6 +27,9 @@ gem "turbo-rails"
 # Active Storage
 gem "image_processing", "~> 1.2"
 
+# Api
+gem "apipie-rails"
+
 # Other
 gem "bcrypt", "~> 3.1.7"
 gem "faraday"
@@ -34,7 +37,6 @@ gem "faraday-retry"
 gem "jwt"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
-
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]

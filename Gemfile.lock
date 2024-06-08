@@ -100,6 +100,9 @@ GEM
   specs:
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    apipie-rails (1.4.0)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -345,6 +348,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  apipie-rails
   bcrypt (~> 3.1.7)
   bootsnap
   capybara
