@@ -1,5 +1,5 @@
 module Api
-  class IndexController < Api::BaseController
+  class SessionsController < Api::BaseController
     allow_unauthenticated_access only: :create
 
     def create

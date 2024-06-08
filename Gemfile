@@ -43,6 +43,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "letter_opener"
+  gem "rspec-rails"
+  gem "rswag-specs"
 end
 
 group :development do
