@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   normalizes :email, with: ->(email) { email.strip.downcase }
 
-  after_commit :send_welcome_email, on: :create, if: -> { email.present? }
+  after_commit :send_welcome_email, on: :create, unless: -> { email.end_with?("@fake.mail") }
 
   generates_token_for :password_reset, expires_in: 15.minutes do
     password_salt&.last(10)

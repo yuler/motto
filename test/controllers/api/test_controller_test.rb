@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Api
-  class IndexControllerTest < ActionDispatch::IntegrationTest
+  class TestControllerTest < ActionDispatch::IntegrationTest
     test "test public api success w/ 200" do
       get api_public_url
       assert_response :success
