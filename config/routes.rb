@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     get "public" => "test#public", as: :public
     get "protected" => "test#protected", as: :protected
 
-    resources "sessions", only: [ :create, :show, :destroy ]
+    resources "sessions", only: [ :create ]
+
+    resources :users do
+      resource :profile, only: [ :show, :update ]
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

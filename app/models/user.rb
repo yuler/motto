@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_later
   end
+
+  def as_json(options = {})
+    super(options.merge(except: %i[password_digest]))
+  end
 end

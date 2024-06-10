@@ -6,6 +6,9 @@ module Api
     description "Create a new session, return JWT"
     formats [ "json" ]
     param :code, String, desc: "The wechat miniprogram `wx.login` returns code", required: true, missing_message: "The params code required"
+    example <<-EOS
+      { code: '<wx.login#code>' }
+    EOS
     returns code: 200, desc: "A successful response" do
       property :token, String, desc: "The JWT token"
     end

@@ -11,7 +11,7 @@ class Quote < ApplicationRecord
   def validate_poster
     return unless poster.attached?
 
-    if !poster.content_type.in?(%w[image/jpeg image/png])
+    if !poster.content_type.in?(%w[image/png image/jpg image/jpeg])
       errors.add(:poster, "must be a JPEG or PNG.")
     elsif poster.blob.byte_size > 1.megabyte
       errors.add(:poster, "is too large. Maximum size is 1 MB.")
