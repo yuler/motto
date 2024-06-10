@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :users do
       resource :profile, only: [ :show, :update ]
     end
+    resources :quotes, only: [ :index, :show ]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
