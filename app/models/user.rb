@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :clock_ins, dependent: :destroy
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 

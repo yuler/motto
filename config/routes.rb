@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :users do
       resource :profile, only: [ :show, :update ]
+      resource :clock_ins, only: [ :create ]
     end
     resources :quotes, only: [ :index, :show ]
   end
