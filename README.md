@@ -28,3 +28,13 @@ ngrok http 3000
 # Open a bash shell inside the container
 docker exec -it motto bash
 ```
+
+## Kamal
+
+```bash
+kamal init
+kamal env push
+kamal setup
+kamal deploy
+kamal app exec -i 'bin/rails console'
+```
