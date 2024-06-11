@@ -35,8 +35,8 @@ module Api
       if user.blank?
         user = User.create!(
           email: "#{open_id}@fake.mail",
-          password: SecureRandom.hex(16),
-          provider: "wechat_miniprogram",
+          password: SecureRandom.hex(6),
+          provider: :wechat_miniprogram,
           open_id: open_id
         )
       end

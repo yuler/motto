@@ -72,6 +72,23 @@ Rails.application.configure do
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "motto_production"
 
+  # Action mailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = { from: ENV.fetch("SMTP_USERNAME", nil) }
+  config.action_mailer.default_url_options = { host: ENV.fetch("SITE_HOST") { "localhost:3000" } }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.exmail.qq.com",
+    port: 465,
+    domain: "motto.yuler.cc",
+    user_name: ENV.fetch("SMTP_USERNAME", nil),
+    password: ENV.fetch("SMTP_PASSWORD", nil),
+    authentication: "plain",
+    enable_starttls: true,
+    ssl: true,
+    open_timeout: 30,
+    read_timeout: 30
+  }
+  config.action_mailer.perform_caching = false
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

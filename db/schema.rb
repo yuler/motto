@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_06_11_022453) do
+ActiveRecord::Schema[8.0].define(version: 2024_06_11_104124) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,12 +47,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_06_11_022453) do
     t.index ["user_id"], name: "index_clock_ins_on_user_id"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "quotes", force: :cascade do |t|
     t.string "content"
     t.string "author"
@@ -64,11 +58,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_06_11_022453) do
     t.string "email"
     t.string "password_digest"
     t.string "nickname"
-    t.string "provider"
+    t.integer "provider"
     t.string "open_id"
-    t.string "role", default: "user"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["open_id"], name: "index_users_on_open_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

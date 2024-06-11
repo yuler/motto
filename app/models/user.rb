@@ -2,9 +2,13 @@ class User < ApplicationRecord
   has_secure_password
   has_one_attached :avatar
 
+  enum role: { member: 0, maintainer: 1 }
+  enum provider: { system: 0, web: 1, wechat_miniprogram: 2 }
+
   has_many :clock_ins, dependent: :destroy
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :open_id, uniqueness: true, allow_nil: true
 
   normalizes :email, with: ->(email) { email.strip.downcase }
 
