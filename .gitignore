@@ -43,3 +43,4 @@ config/deploy.yml
 
 # misc
 TODO.md
+.DS_Store
