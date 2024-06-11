@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
+  has_one_attached :avatar
+
   has_many :clock_ins, dependent: :destroy
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
@@ -12,11 +14,15 @@ class User < ApplicationRecord
     password_salt&.last(10)
   end
 
+  def avatar_url
+    Rails.application.routes.url_helpers.rails_blob_url(avatar) if avatar.attached?
+  end
+
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_later
   end
 
   def as_json(options = {})
-    super(options.merge(except: %i[password_digest]))
+    super(options.merge(except: %i[password_digest], methods: %i[avatar_url]))
   end
 end

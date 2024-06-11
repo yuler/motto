@@ -4,7 +4,6 @@ one:
   email: MyString
   password_digest: MyString
   nickname: MyString
-  avatar: MyString
   provider: MyString
   open_id: MyString
 
@@ -12,6 +11,5 @@ two:
   email: MyString
   password_digest: MyString
   nickname: MyString
-  avatar: MyString
   provider: MyString
   open_id: MyString

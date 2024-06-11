@@ -7,7 +7,7 @@ module Api
       property :id, Integer, desc: "User ID"
       property :email, String, desc: "Email"
       property :nickname, String, desc: "Nickname"
-      property :avatar, String, desc: "Avatar"
+      property :avatar_url, String, desc: "Avatar"
       property :provider, String, desc: "Provider"
       property :open_id, String, desc: "Open ID"
       property :role, String, desc: "Role"
@@ -24,15 +24,26 @@ module Api
 
     api :PUT, "/users/me/profile", "Update the current user(avatar, nickname)"
     description "Update the current user(avatar, nickname)"
-    formats [ "json" ]
+    formats [ "json", "multipart/form-data" ]
     param :profile, Hash, desc: "Profile attributes", required: true do
       param :nickname, String, desc: "Nickname"
-      param :avatar, String, desc: "Avatar"
+      param :avatar, File, desc: "Avatar"
+    end
+    returns code: 200, desc: "A successful response" do
+      property :id, Integer, desc: "User ID"
+      property :email, String, desc: "Email"
+      property :nickname, String, desc: "Nickname"
+      property :avatar_url, String, desc: "Avatar"
+      property :provider, String, desc: "Provider"
+      property :open_id, String, desc: "Open ID"
+      property :role, String, desc: "Role"
+      property :created_at, String, desc: "Created at"
+      property :updated_at, String, desc: "Updated at"
     end
     example <<-EOS
       {
-        "avatar": "12222",
-        "nickname": "2xxx"
+        nickname: "new nickname",
+        avatar: <File>
       }
     EOS
     def update
@@ -44,7 +55,7 @@ module Api
     private
 
     def profile_params
-      params.require(:profile).permit(:nickname, :avatar)
+      params.permit(:nickname, :avatar)
     end
   end
 end
