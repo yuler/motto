@@ -75,9 +75,9 @@ Rails.application.configure do
   # Action mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = { from: ENV.fetch("SMTP_USERNAME", nil) }
-  config.action_mailer.default_url_options = { host: ENV.fetch("SITE_HOST") { "localhost:3000" } }
+  config.action_mailer.default_url_options = { host: ENV.fetch("SITE_HOST", "localhost:3000") }
   config.action_mailer.smtp_settings = {
-    address: "smtp.exmail.qq.com",
+    address: ENV.fetch("SMTP_ADDRESS", nil),
     port: 465,
     domain: "motto.yuler.cc",
     user_name: ENV.fetch("SMTP_USERNAME", nil),
