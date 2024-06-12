@@ -52,7 +52,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=auto
           tags: |
-            type=sha,format=long
+            type=sha,prefix=,format=long
             type=semver,pattern={{version}}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=raw,value=stable,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
