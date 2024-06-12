@@ -5,7 +5,9 @@ module Motto
     end
 
     def commit_sha
-      `git rev-parse HEAD`.chomp
+      sha = ENV["COMMIT_SHA"]
+      sha = `git rev-parse HEAD`.chomp if Rails.env.development?
+      sha
     end
 
     private

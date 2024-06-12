@@ -51,8 +51,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=auto
-          labels: |
-            service
           tags: |
             type=sha,prefix=,format=long
             type=semver,pattern={{version}}
@@ -70,6 +68,9 @@ jobs:
             ${{ steps.meta.outputs.labels }}
             service=motto
             maintainer=is.yuler@gmail.com
+            commit_sha=${{ github.sha }}
+          build-args: |
+            COMMIT_SHA=${{ github.sha }}
           # platforms: linux/amd64,linux/arm64,linux/arm/v7
           cache-from: type=gha
           cache-to: type=gha,mode=max

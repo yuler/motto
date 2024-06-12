@@ -17,6 +17,10 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
+# Receive the commit SHA from the build command
+ARG COMMIT_SHA
+ENV COMMIT_SHA=$COMMIT_SHA
+
 # Throw-away build stage to reduce size of final image
 FROM base as build
 

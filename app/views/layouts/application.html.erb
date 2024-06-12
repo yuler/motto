@@ -4,7 +4,9 @@
     <title>Motto</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="current-version" content="<%= Motto.version %>">
-    <meta name="current-commit-sha" content="<%= Motto.commit_sha %>">
+    <% if Motto.commit_sha.present? %>
+      <meta name="current-commit-sha" content="<%= Motto.commit_sha %>">
+    <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
