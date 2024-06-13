@@ -7,7 +7,7 @@ module Api
     returns code: 200, desc: "A successful response" do
     end
     def show
-      render json: Quote.last
+      @quote = Quote.today
     end
   end
 end
