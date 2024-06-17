@@ -1,6 +1,5 @@
 class Quote < ApplicationRecord
   has_one_attached :poster
-  has_one_attached :audio
   has_one_attached :video
 
   validates :author, presence: true
@@ -16,10 +15,6 @@ class Quote < ApplicationRecord
   # TODO: optimize
   def poster_url
     attachment_url(poster)
-  end
-
-  def audio_url
-    attachment_url(audio)
   end
 
   def video_url

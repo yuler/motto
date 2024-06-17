@@ -1,1 +1,1 @@
-json.(@quote, :content, :author, :poster_url, :audio_url, :video_url)
+json.(@quote, :content, :author, :poster_url, :video_url)
